@@ -1,4 +1,5 @@
 import java.sql.*;
+import java.io.*;
 public class PreparedStatement{
     public static void main(String[] args) {
         try {
@@ -9,19 +10,19 @@ public class PreparedStatement{
             Connection con=DriverManager.getConnection(url, user, password);
             String q="insert into table1(tName,tCity) values (?,?)";  
             java.sql.PreparedStatement pstmt= con.prepareStatement(q);
-            pstmt.setString(1,"Afnan");
-            pstmt.setString(2,"Srinagar");
+            //taking custom input from user
+            BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
+            System.out.println("Enter the name :");
+            String name=br.readLine();
+            System.out.println("Enter the city name");
+            String city=br.readLine();
+            pstmt.setString(1, name);
+            pstmt.setString(2, city);
             pstmt.executeUpdate();
-            
-            System.out.println("connnected");
+            System.out.println("Data saved successfully");
+
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
-
-    private void executeUpdate() {
-    }
-
-    private void setString(int i, String string) {
     }
 }
