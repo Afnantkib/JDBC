@@ -1,5 +1,5 @@
 import java.sql.*;
-class InsertJDBC{
+class CreateJDBC{
 
     public static void main(String[] args) {
         try {
